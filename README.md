@@ -15,6 +15,20 @@ More templates coming soon.
 ## using `gonew` with `go-templates`
 [gonew](https://go.dev/blog/gonew) is an experimental tool for creating new projects in Go from predefined templates. It simplifies the project setup process, allowing you to quickly clone and start working on a new project.
 
+To clone a template from go-templates:
+
+```
+gonew github.com/tiagomelo/go-templates/example-rest-api
+```
+
+If you want to specify your own module name,
+
+```
+gonew github.com/tiagomelo/go-templates/example-rest-api yourmodulepath/myproject
+```
+
+For more information about gonew, check out the [Go blog](https://go.dev/blog/gonew).
+
 ## contributing
 
 Contributions to expand and improve the templates are welcome. Feel free to fork, submit pull requests, or open issues for new template ideas or enhancements.
