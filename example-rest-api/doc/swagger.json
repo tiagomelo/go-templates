@@ -146,7 +146,7 @@
   "definitions": {
     "Book": {
       "type": "object",
-      "title": "Book represents the model for a book.",
+      "title": "Book represents the model for a book record.",
       "properties": {
         "author": {
           "type": "string",
@@ -196,6 +196,7 @@
     },
     "UpdatedBook": {
       "type": "object",
+      "title": "UpdateBook is used to update a book record.",
       "properties": {
         "author": {
           "type": "string",

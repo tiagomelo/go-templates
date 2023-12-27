@@ -16,6 +16,7 @@ import (
 	"testing"
 
 	"github.com/gorilla/mux"
+	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"github.com/tiagomelo/go-templates/example-rest-api/db"
 	"github.com/tiagomelo/go-templates/example-rest-api/handlers"
@@ -52,43 +53,43 @@ func TestMain(m *testing.M) {
 func TestV1Create(t *testing.T) {
 	input := `{"title":"some title","author":"some author","pages":100}`
 	expectedOutput := `{"id":1,"title":"some title","author":"some author","pages":100}`
-	resp, err := http.Post(testServer.URL+"/book", "application/json", bytes.NewBuffer([]byte(input)))
+	resp, err := http.Post(testServer.URL+"/v1/book", "application/json", bytes.NewBuffer([]byte(input)))
 	require.NoError(t, err)
 	defer resp.Body.Close()
-	require.Equal(t, http.StatusCreated, resp.StatusCode)
+	assert.Equal(t, http.StatusCreated, resp.StatusCode)
 	b, err := io.ReadAll(resp.Body)
 	require.NoError(t, err)
-	require.Equal(t, expectedOutput, string(b))
+	assert.Equal(t, expectedOutput, string(b))
 }
 
 func TestV1GetById(t *testing.T) {
 	bookId := 1
 	expectedOutput := `{"id":1,"title":"some title","author":"some author","pages":100}`
-	resp, err := http.Get(fmt.Sprintf("%s/book/%d", testServer.URL, bookId))
+	resp, err := http.Get(fmt.Sprintf("%s/v1/book/%d", testServer.URL, bookId))
 	require.NoError(t, err)
 	defer resp.Body.Close()
-	require.Equal(t, http.StatusOK, resp.StatusCode)
+	assert.Equal(t, http.StatusOK, resp.StatusCode)
 	b, err := io.ReadAll(resp.Body)
 	require.NoError(t, err)
-	require.Equal(t, expectedOutput, string(b))
+	assert.Equal(t, expectedOutput, string(b))
 }
 
 func TestV1List(t *testing.T) {
 	expectedOutput := `[{"id":1,"title":"some title","author":"some author","pages":100}]`
-	resp, err := http.Get(testServer.URL + "/books")
+	resp, err := http.Get(testServer.URL + "/v1/books")
 	require.NoError(t, err)
 	defer resp.Body.Close()
-	require.Equal(t, http.StatusOK, resp.StatusCode)
+	assert.Equal(t, http.StatusOK, resp.StatusCode)
 	b, err := io.ReadAll(resp.Body)
 	require.NoError(t, err)
-	require.Equal(t, expectedOutput, string(b))
+	assert.Equal(t, expectedOutput, string(b))
 }
 
 func TestV1Update(t *testing.T) {
 	bookId := "1"
 	input := `{"title":"new title","author":"new author","pages":150}`
 	expectedOutput := `{"id":1,"title":"new title","author":"new author","pages":150}`
-	req, err := http.NewRequest(http.MethodPut, fmt.Sprintf("%s/book/%s", testServer.URL, bookId), bytes.NewBuffer([]byte(input)))
+	req, err := http.NewRequest(http.MethodPut, fmt.Sprintf("%s/v1/book/%s", testServer.URL, bookId), bytes.NewBuffer([]byte(input)))
 	require.NoError(t, err)
 	vars := map[string]string{
 		"id": bookId,
@@ -97,15 +98,15 @@ func TestV1Update(t *testing.T) {
 	resp, err := http.DefaultClient.Do(req)
 	require.NoError(t, err)
 	defer resp.Body.Close()
-	require.Equal(t, http.StatusOK, resp.StatusCode)
+	assert.Equal(t, http.StatusOK, resp.StatusCode)
 	b, err := io.ReadAll(resp.Body)
 	require.NoError(t, err)
-	require.Equal(t, expectedOutput, string(b))
+	assert.Equal(t, expectedOutput, string(b))
 }
 
 func TestV1DeleteById(t *testing.T) {
 	bookId := "1"
-	req, err := http.NewRequest(http.MethodDelete, fmt.Sprintf("%s/book/%s", testServer.URL, bookId), nil)
+	req, err := http.NewRequest(http.MethodDelete, fmt.Sprintf("%s/v1/book/%s", testServer.URL, bookId), nil)
 	require.NoError(t, err)
 	vars := map[string]string{
 		"id": bookId,
