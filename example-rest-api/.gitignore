@@ -1,0 +1,3 @@
+coverage.out
+db/*.db
+.vscode

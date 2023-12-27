@@ -1,0 +1,251 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "description": "A sample RESTful API to manage books.",
+    "title": "Books Rest API",
+    "contact": {
+      "name": "Tiago Melo",
+      "email": "tiagoharris@gmail.com"
+    },
+    "version": "0.0.1"
+  },
+  "paths": {
+    "/v1/book": {
+      "post": {
+        "tags": [
+          "book"
+        ],
+        "summary": "Create a book.",
+        "operationId": "Create",
+        "responses": {
+          "201": {
+            "$ref": "#/responses/createBookResponse"
+          },
+          "400": {
+            "description": " missing required fields"
+          },
+          "500": {
+            "description": " internal server error"
+          }
+        }
+      }
+    },
+    "/v1/book/{id}": {
+      "get": {
+        "tags": [
+          "book"
+        ],
+        "summary": "Get a book by its id.",
+        "operationId": "GetById",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/getBookByIdResponse"
+          },
+          "400": {
+            "description": " invalid id"
+          },
+          "404": {
+            "description": " book not found"
+          },
+          "500": {
+            "description": " internal server error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "book"
+        ],
+        "summary": "Update a book.",
+        "operationId": "Update",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/updateBookResponse"
+          },
+          "400": {
+            "description": " missing required fields"
+          },
+          "404": {
+            "description": " book not found"
+          },
+          "500": {
+            "description": " internal server error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "book"
+        ],
+        "summary": "Delete a book by its id.",
+        "operationId": "DeleteById",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": " success"
+          },
+          "400": {
+            "description": " invalid id"
+          },
+          "500": {
+            "description": " internal server error"
+          }
+        }
+      }
+    },
+    "/v1/books": {
+      "get": {
+        "tags": [
+          "books"
+        ],
+        "summary": "List all books.",
+        "operationId": "List",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/listBooksResponse"
+          },
+          "500": {
+            "description": " internal server error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Book": {
+      "type": "object",
+      "title": "Book represents the model for a book.",
+      "properties": {
+        "author": {
+          "type": "string",
+          "x-go-name": "Author"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Id"
+        },
+        "pages": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Pages"
+        },
+        "title": {
+          "type": "string",
+          "x-go-name": "Title"
+        }
+      },
+      "x-go-package": "github.com/tiagomelo/go-templates/example-rest-api/db/books/models"
+    },
+    "NewBook": {
+      "type": "object",
+      "title": "NewBook is used to create a new book record.",
+      "properties": {
+        "author": {
+          "type": "string",
+          "x-go-name": "Author"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Id"
+        },
+        "pages": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Pages"
+        },
+        "title": {
+          "type": "string",
+          "x-go-name": "Title"
+        }
+      },
+      "x-go-package": "github.com/tiagomelo/go-templates/example-rest-api/db/books/models"
+    },
+    "UpdatedBook": {
+      "type": "object",
+      "properties": {
+        "author": {
+          "type": "string",
+          "x-go-name": "Author"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Id"
+        },
+        "pages": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Pages"
+        },
+        "title": {
+          "type": "string",
+          "x-go-name": "Title"
+        }
+      },
+      "x-go-package": "github.com/tiagomelo/go-templates/example-rest-api/db/books/models"
+    }
+  },
+  "responses": {
+    "createBookResponse": {
+      "description": "",
+      "schema": {
+        "$ref": "#/definitions/NewBook"
+      }
+    },
+    "getBookByIdResponse": {
+      "description": "",
+      "schema": {
+        "$ref": "#/definitions/Book"
+      }
+    },
+    "listBooksResponse": {
+      "description": "",
+      "schema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/Book"
+        }
+      }
+    },
+    "updateBookResponse": {
+      "description": "",
+      "schema": {
+        "$ref": "#/definitions/UpdatedBook"
+      }
+    }
+  }
+}
