@@ -10,6 +10,8 @@ These templates are designed to provide a solid starting point for various types
 
 - [example-rest-api](./example-rest-api/): A fully functional REST API for managing books. Utilizes Gorilla Mux, middleware, validator for input validation, and features comprehensive API documentation with Swagger.
 
+- [example-grpc-crud-service](./example-grpc-crud-service/): A fully functional gRPC service. Utilizes Google's gRPC framework, Google's Protocol Buffers and validator for input validation.
+
 More templates coming soon.
 
 ## using `gonew` with `go-templates`
