@@ -1,0 +1,4 @@
+*.db
+coverage.out
+cert/*.pem
+cert/*.srl

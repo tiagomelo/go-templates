@@ -1,0 +1,73 @@
+// Copyright (c) 2023 Tiago Melo. All rights reserved.
+// Use of this source code is governed by the MIT License that can be found in
+// the LICENSE file.
+
+syntax = "proto3";
+
+package books;
+option go_package = "github.com/tiagomelo/go-templates/example-grpc-crud-service-with-tls/api/proto/gen/book";
+
+// BookService provides CRUD operations for managing books.
+service BookService {
+    // GetAllBooks retrieves all books in the database.
+    rpc GetAllBooks (GetAllBooksRequest) returns (GetAllBooksResponse);
+
+    // GetBook retrieves a single book by its ID.
+    rpc GetBook (GetBookRequest) returns (Book);
+
+    // CreateBook adds a new book to the database.
+    rpc CreateBook (CreateBookRequest) returns (Book);
+
+    // UpdateBook modifies an existing book's details.
+    rpc UpdateBook (UpdateBookRequest) returns (Book);
+
+    // DeleteBook removes a book from the database by its ID.
+    rpc DeleteBook (DeleteBookRequest) returns (DeleteBookResponse);
+}
+
+// GetAllBooksRequest is the request message for GetAllBooks RPC.
+message GetAllBooksRequest {}
+
+// Book represents a book with an ID, title, author, and number of pages.
+message Book {
+    int32 id = 1;       // Unique identifier for the book.
+    string title = 2;   // Title of the book.
+    string author = 3;  // Author of the book.
+    int32 pages = 4;    // Number of pages in the book.
+}
+
+// GetAllBooksResponse is the response message for GetAllBooks RPC.
+// It contains a list of books.
+message GetAllBooksResponse {
+    repeated Book books = 1; // List of books.
+}
+
+// GetBookRequest is the request message for GetBook RPC.
+// It includes the ID of the book to retrieve.
+message GetBookRequest {
+    int32 id = 1; // ID of the book to retrieve.
+}
+
+// CreateBookRequest is the request message for CreateBook RPC.
+// It includes the details of the book to create.
+message CreateBookRequest {
+    Book book = 1; // Details of the book to create.
+}
+
+// UpdateBookRequest is the request message for UpdateBook RPC.
+// It includes the updated details of the book.
+message UpdateBookRequest {
+    Book book = 1; // Updated details of the book.
+}
+
+// DeleteBookRequest is the request message for DeleteBook RPC.
+// It includes the ID of the book to delete.
+message DeleteBookRequest {
+    int32 id = 1; // ID of the book to delete.
+}
+
+// DeleteBookResponse is the response message for DeleteBook RPC.
+// It confirms the deletion of the book by returning its ID.
+message DeleteBookResponse {
+    int32 id = 1; // ID of the book that was deleted.
+}

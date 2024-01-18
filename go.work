@@ -3,4 +3,5 @@ go 1.21.5
 use (
 	./example-grpc-crud-service
 	./example-rest-api
+	./example-grpc-crud-service-with-tls
 )
