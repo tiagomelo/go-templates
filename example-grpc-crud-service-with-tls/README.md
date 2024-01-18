@@ -22,6 +22,8 @@ For client examples, check [examples/client](./examples/client) folder.
 
 ### Postman
 
+[https://learning.postman.com/docs/sending-requests/certificates/](https://learning.postman.com/docs/sending-requests/certificates/)
+
 1. In `Settings -> Certificates`
 
 ![addCert](./doc/postmanAddCert.png)

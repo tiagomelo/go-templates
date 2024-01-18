@@ -12,6 +12,8 @@ These templates are designed to provide a solid starting point for various types
 
 - [example-grpc-crud-service](./example-grpc-crud-service/): A fully functional gRPC service. Utilizes Google's gRPC framework, Google's Protocol Buffers and validator for input validation.
 
+- [example-grpc-crud-service-with-tls](./example-grpc-crud-service-with-tls/): A fully functional gRPC service, using TLS.
+
 More templates coming soon.
 
 ## using `gonew` with `go-templates`
