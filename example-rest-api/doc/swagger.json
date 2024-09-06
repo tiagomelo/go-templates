@@ -16,7 +16,7 @@
     "version": "0.0.1"
   },
   "paths": {
-    "/v1/book": {
+    "/api/v1/book": {
       "post": {
         "tags": [
           "book"
@@ -36,7 +36,7 @@
         }
       }
     },
-    "/v1/book/{id}": {
+    "/api/v1/book/{id}": {
       "get": {
         "tags": [
           "book"
@@ -125,7 +125,7 @@
         }
       }
     },
-    "/v1/books": {
+    "/api/v1/books": {
       "get": {
         "tags": [
           "books"

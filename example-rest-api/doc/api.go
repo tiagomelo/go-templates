@@ -2,7 +2,7 @@ package doc
 
 import "github.com/tiagomelo/go-templates/example-rest-api/db/books/models"
 
-// swagger:route GET /v1/books books List
+// swagger:route GET /api/v1/books books List
 // List all books.
 // ---
 // responses:
@@ -15,7 +15,7 @@ type ListBooksdResponseWrapper struct {
 	Body []models.Book
 }
 
-// swagger:route GET /v1/book/{id} book GetById
+// swagger:route GET /api/v1/book/{id} book GetById
 // Get a book by its id.
 // ---
 // responses:
@@ -36,7 +36,7 @@ type GetBookByIdResponseWrapper struct {
 	Body models.Book
 }
 
-// swagger:route POST /v1/book book Create
+// swagger:route POST /api/v1/book book Create
 // Create a book.
 // ---
 // responses:
@@ -50,7 +50,7 @@ type CreateBookResponseWrapper struct {
 	Body models.NewBook
 }
 
-// swagger:route PUT /v1/book/{id} book Update
+// swagger:route PUT /api/v1/book/{id} book Update
 // Update a book.
 // ---
 // responses:
@@ -72,7 +72,7 @@ type UpdateBookResponseWrapper struct {
 	Body models.UpdatedBook
 }
 
-// swagger:route DELETE /v1/book/{id} book DeleteById
+// swagger:route DELETE /api/v1/book/{id} book DeleteById
 // Delete a book by its id.
 // ---
 // responses:

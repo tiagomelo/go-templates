@@ -37,9 +37,10 @@ func Routes(c *Config) *mux.Router {
 // initializeRoutes sets up the routes for book operations.
 func initializeRoutes(db *sql.DB, router *mux.Router) {
 	booksHandlers := books.New(db)
-	router.HandleFunc("/v1/book", booksHandlers.Create).Methods(http.MethodPost)
-	router.HandleFunc("/v1/book/{id}", booksHandlers.Update).Methods(http.MethodPut)
-	router.HandleFunc("/v1/book/{id}", booksHandlers.GetById).Methods(http.MethodGet)
-	router.HandleFunc("/v1/book/{id}", booksHandlers.DeleteById).Methods(http.MethodDelete)
-	router.HandleFunc("/v1/books", booksHandlers.List).Methods(http.MethodGet)
+	apiRouter := router.PathPrefix("/api").Subrouter()
+	apiRouter.HandleFunc("/v1/book", booksHandlers.Create).Methods(http.MethodPost)
+	apiRouter.HandleFunc("/v1/book/{id}", booksHandlers.Update).Methods(http.MethodPut)
+	apiRouter.HandleFunc("/v1/book/{id}", booksHandlers.GetById).Methods(http.MethodGet)
+	apiRouter.HandleFunc("/v1/book/{id}", booksHandlers.DeleteById).Methods(http.MethodDelete)
+	apiRouter.HandleFunc("/v1/books", booksHandlers.List).Methods(http.MethodGet)
 }
