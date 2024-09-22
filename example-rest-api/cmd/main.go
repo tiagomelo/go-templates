@@ -93,7 +93,7 @@ func main() {
 	}
 	log := slog.New(slog.NewJSONHandler(os.Stdout, nil))
 	if err := run(opts.Port, log); err != nil {
-		log.Error("error:", err)
+		log.Error("error", slog.Any("err", err))
 		os.Exit(1)
 	}
 }
