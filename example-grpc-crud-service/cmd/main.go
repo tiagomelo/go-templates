@@ -14,8 +14,8 @@ import (
 
 	"github.com/jessevdk/go-flags"
 	"github.com/pkg/errors"
+	"github.com/tiagomelo/go-templates/example-grpc-crud-service/db"
 	"github.com/tiagomelo/go-templates/example-grpc-crud-service/server"
-	"github.com/tiagomelo/go-templates/example-rest-api/db"
 )
 
 type options struct {
