@@ -42,7 +42,7 @@ func run() error {
 		Certificates: []tls.Certificate{clientCert},
 		RootCAs:      certPool,
 	}
-	conn, err := grpc.DialContext(ctx, serverHost, grpc.WithBlock(), grpc.WithTransportCredentials(credentials.NewTLS(config)))
+	conn, err := grpc.NewClient(serverHost, grpc.WithTransportCredentials(credentials.NewTLS(config)))
 	if err != nil {
 		return errors.Wrap(err, "dialing")
 	}

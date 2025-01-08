@@ -85,5 +85,17 @@ coverage:
 .PHONY: run
 ## run: runs the gRPC server
 run: migrate-up
+	@ if [ -z "$(PORT)" ]; then echo >&2 please set the desired port via the variable PORT; exit 2; fi
 	@ go run cmd/main.go -p $(PORT)
 
+# ==============================================================================
+# Examples
+
+.PHONY: examples
+## examples: run the gRPC client examples
+examples: 
+	@ go run examples/client/create_book/create_book.go
+	@ go run examples/client/get_book/get_book.go
+	@ go run examples/client/get_all_books/get_all_books.go
+	@ go run examples/client/update_book/update_book.go
+	@ go run examples/client/delete_book/delete_book.go

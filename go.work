@@ -1,7 +1,8 @@
-go 1.22.3
+go 1.23.4
 
 use (
 	./example-grpc-crud-service
+	./example-grpc-crud-service-with-jwt
 	./example-grpc-crud-service-with-tls
 	./example-rest-api
 )
