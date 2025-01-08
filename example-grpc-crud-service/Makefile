@@ -93,7 +93,7 @@ run: migrate-up
 
 .PHONY: examples
 ## examples: run the gRPC client examples
-examples: 
+examples: migrate-down migrate-up
 	@ go run examples/client/create_book/create_book.go
 	@ go run examples/client/get_book/get_book.go
 	@ go run examples/client/get_all_books/get_all_books.go
