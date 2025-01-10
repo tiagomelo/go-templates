@@ -10,6 +10,7 @@ import (
 	"log"
 
 	"github.com/pkg/errors"
+	"github.com/tiagomelo/go-templates/example-grpc-crud-service-with-jwt/interceptor"
 	"github.com/tiagomelo/go-templates/example-grpc-crud-service/api/proto/gen/book"
 	"github.com/tiagomelo/go-templates/example-grpc-crud-service/db/books"
 	bookErrors "github.com/tiagomelo/go-templates/example-grpc-crud-service/db/books/errors"
@@ -17,6 +18,7 @@ import (
 	"github.com/tiagomelo/go-templates/example-grpc-crud-service/validate"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
 )
 
@@ -40,8 +42,8 @@ type server struct {
 
 // New creates and returns a new server instance.
 // It initializes the gRPC server and registers the BookService.
-func New(logger *log.Logger, db *sql.DB) *server {
-	grpServer := grpc.NewServer()
+func New(logger *log.Logger, db *sql.DB, interceptor *interceptor.AuthInterceptor) *server {
+	grpServer := grpc.NewServer(grpc.UnaryInterceptor(interceptor.UnaryAuthMiddleware))
 	srv := &server{
 		GrpcSrv: grpServer,
 		logger:  logger,
@@ -54,6 +56,18 @@ func New(logger *log.Logger, db *sql.DB) *server {
 // GetAllBooks handles the GetAllBooks gRPC call.
 // It retrieves all books from the database and returns them.
 func (s *server) GetAllBooks(ctx context.Context, in *book.GetAllBooksRequest) (*book.GetAllBooksResponse, error) {
+	md, ok := metadata.FromIncomingContext(ctx)
+	if !ok {
+		return nil, status.Error(codes.FailedPrecondition, "metadata missing")
+	}
+	userIDs := md.Get("user_id")
+	if len(userIDs) == 0 {
+		return nil, status.Error(codes.FailedPrecondition, "user id missing")
+	}
+	userID := userIDs[0]
+
+	s.logger.Printf("user id: %s", userID)
+
 	books, err := listBooks(ctx, s.db)
 	if err != nil {
 		s.logger.Println(err)

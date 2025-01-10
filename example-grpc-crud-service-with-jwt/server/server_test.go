@@ -72,7 +72,7 @@ func TestGetAllBooks(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			listBooks = tc.mockListBooks
 			logger := log.New(io.Discard, "", 0)
-			s := New(logger, nil)
+			s := New(logger, nil, nil)
 			output, err := s.GetAllBooks(context.TODO(), &book.GetAllBooksRequest{})
 			if err != nil {
 				if tc.expectedError == nil {
@@ -132,7 +132,7 @@ func TestGetBook(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			getBookById = tc.mockGetBookById
 			logger := log.New(io.Discard, "", 0)
-			s := New(logger, nil)
+			s := New(logger, nil, nil)
 			output, err := s.GetBook(context.TODO(), &book.GetBookRequest{Id: 1})
 			if err != nil {
 				if tc.expectedError == nil {
@@ -224,7 +224,7 @@ func TestCreateBook(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			createBook = tc.mockCreateBook
 			logger := log.New(io.Discard, "", 0)
-			s := New(logger, nil)
+			s := New(logger, nil, nil)
 			output, err := s.CreateBook(context.TODO(), tc.input)
 			if err != nil {
 				if tc.expectedError == nil {
@@ -316,7 +316,7 @@ func TestUpdateBook(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			updateBook = tc.mockUpdateBook
 			logger := log.New(io.Discard, "", 0)
-			s := New(logger, nil)
+			s := New(logger, nil, nil)
 			output, err := s.UpdateBook(context.TODO(), tc.input)
 			if err != nil {
 				if tc.expectedError == nil {
@@ -368,7 +368,7 @@ func TestDeleteBook(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			deleteBook = tc.mockDeleteBook
 			logger := log.New(io.Discard, "", 0)
-			s := New(logger, nil)
+			s := New(logger, nil, nil)
 			output, err := s.DeleteBook(context.TODO(), tc.input)
 			if err != nil {
 				if tc.expectedError == nil {

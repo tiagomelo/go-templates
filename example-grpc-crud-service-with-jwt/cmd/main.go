@@ -14,8 +14,11 @@ import (
 
 	"github.com/jessevdk/go-flags"
 	"github.com/pkg/errors"
-	"github.com/tiagomelo/go-templates/example-grpc-crud-service/db"
-	"github.com/tiagomelo/go-templates/example-grpc-crud-service/server"
+	"github.com/tiagomelo/go-templates/example-grpc-crud-service-with-jwt/auth"
+	"github.com/tiagomelo/go-templates/example-grpc-crud-service-with-jwt/config"
+	"github.com/tiagomelo/go-templates/example-grpc-crud-service-with-jwt/db"
+	"github.com/tiagomelo/go-templates/example-grpc-crud-service-with-jwt/interceptor"
+	"github.com/tiagomelo/go-templates/example-grpc-crud-service-with-jwt/server"
 )
 
 type options struct {
@@ -25,6 +28,24 @@ type options struct {
 func run(logger *log.Logger, serverPort int) error {
 	logger.Println("main: initializing gRPC server")
 	defer logger.Println("main: Completed")
+
+	// =========================================================================
+	// Config reading
+
+	cfg, err := config.Read()
+	if err != nil {
+		return errors.Wrap(err, "reading config")
+	}
+
+	// =========================================================================
+	// Auth service init
+
+	authSvc := auth.NewService(cfg.JwtKey)
+
+	// =========================================================================
+	// Interceptor init
+
+	interceptor := interceptor.NewAuthInterceptor(authSvc)
 
 	// =========================================================================
 	// Database support
@@ -47,7 +68,7 @@ func run(logger *log.Logger, serverPort int) error {
 	// =========================================================================
 	// Server init
 
-	srv := server.New(logger, db)
+	srv := server.New(logger, db, interceptor)
 
 	// Make a channel to listen for an interrupt or terminate signal from the OS.
 	// Use a buffered channel because the signal package requires it.
