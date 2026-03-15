@@ -18,8 +18,8 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/tiagomelo/go-templates/example-rest-api/db"
-	"github.com/tiagomelo/go-templates/example-rest-api/handlers"
+	"github.com/tiagomelo/go-templates/example-rest-api-crud/db"
+	"github.com/tiagomelo/go-templates/example-rest-api-crud/handlers"
 )
 
 var (

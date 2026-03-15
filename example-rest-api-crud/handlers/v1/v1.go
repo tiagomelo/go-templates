@@ -10,8 +10,8 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"github.com/tiagomelo/go-templates/example-rest-api/handlers/v1/books"
-	"github.com/tiagomelo/go-templates/example-rest-api/middleware"
+	"github.com/tiagomelo/go-templates/example-rest-api-crud/handlers/v1/books"
+	"github.com/tiagomelo/go-templates/example-rest-api-crud/middleware"
 )
 
 // Config struct holds the database connection and logger.

@@ -167,7 +167,7 @@
           "x-go-name": "Title"
         }
       },
-      "x-go-package": "github.com/tiagomelo/go-templates/example-rest-api/db/books/models"
+      "x-go-package": "github.com/tiagomelo/go-templates/example-rest-api-crud/db/books/models"
     },
     "NewBook": {
       "type": "object",
@@ -192,7 +192,7 @@
           "x-go-name": "Title"
         }
       },
-      "x-go-package": "github.com/tiagomelo/go-templates/example-rest-api/db/books/models"
+      "x-go-package": "github.com/tiagomelo/go-templates/example-rest-api-crud/db/books/models"
     },
     "UpdatedBook": {
       "type": "object",
@@ -217,7 +217,7 @@
           "x-go-name": "Title"
         }
       },
-      "x-go-package": "github.com/tiagomelo/go-templates/example-rest-api/db/books/models"
+      "x-go-package": "github.com/tiagomelo/go-templates/example-rest-api-crud/db/books/models"
     }
   },
   "responses": {

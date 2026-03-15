@@ -1,6 +1,6 @@
 package doc
 
-import "github.com/tiagomelo/go-templates/example-rest-api/db/books/models"
+import "github.com/tiagomelo/go-templates/example-rest-api-crud/db/books/models"
 
 // swagger:route GET /api/v1/books books List
 // List all books.
