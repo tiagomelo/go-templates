@@ -17,8 +17,8 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/stretchr/testify/require"
-	"github.com/tiagomelo/go-templates/example-rest-api/db/books"
-	"github.com/tiagomelo/go-templates/example-rest-api/db/books/models"
+	"github.com/tiagomelo/go-templates/example-rest-api-crud/db/books"
+	"github.com/tiagomelo/go-templates/example-rest-api-crud/db/books/models"
 )
 
 func TestList(t *testing.T) {

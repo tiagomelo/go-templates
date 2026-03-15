@@ -1,10 +1,10 @@
-# example-rest-api
+# example-rest-api-crud
 
 A sample REST API project in Go designed for managing books. This project serves as a concrete example of a fully functional REST API without relying on complex frameworks.
 
 ## motivation
 
-The motivation behind creating `example-rest-api` was to offer more than just a basic "hello world" example. I aimed to provide a fully functional REST API template, almost production-ready, to demonstrate real-world applications. This project addresses the gap often found in simplistic examples, offering a comprehensive and practical guide for developers looking to understand and implement a REST API in Go without overly complex frameworks.
+The motivation behind creating `example-rest-api-crud` was to offer more than just a basic "hello world" example. I aimed to provide a fully functional REST API template, almost production-ready, to demonstrate real-world applications. This project addresses the gap often found in simplistic examples, offering a comprehensive and practical guide for developers looking to understand and implement a REST API in Go without overly complex frameworks.
 
 ## key features
 

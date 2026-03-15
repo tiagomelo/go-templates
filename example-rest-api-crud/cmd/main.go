@@ -16,8 +16,8 @@ import (
 
 	"github.com/jessevdk/go-flags"
 	"github.com/pkg/errors"
-	"github.com/tiagomelo/go-templates/example-rest-api/db"
-	"github.com/tiagomelo/go-templates/example-rest-api/handlers"
+	"github.com/tiagomelo/go-templates/example-rest-api-crud/db"
+	"github.com/tiagomelo/go-templates/example-rest-api-crud/handlers"
 )
 
 type options struct {

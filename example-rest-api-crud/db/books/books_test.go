@@ -15,7 +15,7 @@ import (
 	"github.com/DATA-DOG/go-sqlmock"
 	"github.com/mattn/go-sqlite3"
 	"github.com/stretchr/testify/require"
-	"github.com/tiagomelo/go-templates/example-rest-api/db/books/models"
+	"github.com/tiagomelo/go-templates/example-rest-api-crud/db/books/models"
 )
 
 func TestList(t *testing.T) {

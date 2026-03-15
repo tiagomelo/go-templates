@@ -9,7 +9,7 @@ import (
 	"log/slog"
 
 	"github.com/gorilla/mux"
-	v1 "github.com/tiagomelo/go-templates/example-rest-api/handlers/v1"
+	v1 "github.com/tiagomelo/go-templates/example-rest-api-crud/handlers/v1"
 )
 
 // ApiMuxConfig struct holds the configuration for the API.

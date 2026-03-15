@@ -11,10 +11,10 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/tiagomelo/go-templates/example-rest-api/db/books"
-	"github.com/tiagomelo/go-templates/example-rest-api/db/books/models"
-	"github.com/tiagomelo/go-templates/example-rest-api/validate"
-	"github.com/tiagomelo/go-templates/example-rest-api/web"
+	"github.com/tiagomelo/go-templates/example-rest-api-crud/db/books"
+	"github.com/tiagomelo/go-templates/example-rest-api-crud/db/books/models"
+	"github.com/tiagomelo/go-templates/example-rest-api-crud/validate"
+	"github.com/tiagomelo/go-templates/example-rest-api-crud/web"
 )
 
 // handlers struct holds a database connection.

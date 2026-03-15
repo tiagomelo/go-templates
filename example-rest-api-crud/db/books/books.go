@@ -11,7 +11,7 @@ import (
 
 	"github.com/mattn/go-sqlite3"
 	"github.com/pkg/errors"
-	"github.com/tiagomelo/go-templates/example-rest-api/db/books/models"
+	"github.com/tiagomelo/go-templates/example-rest-api-crud/db/books/models"
 )
 
 // ErrBookNotFound represents an error when a book is not found in the database.

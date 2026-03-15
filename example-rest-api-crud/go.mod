@@ -1,4 +1,4 @@
-module github.com/tiagomelo/go-templates/example-rest-api
+module github.com/tiagomelo/go-templates/example-rest-api-crud
 
 go 1.22.3
 
