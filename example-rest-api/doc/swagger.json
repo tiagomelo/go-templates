@@ -1,0 +1,58 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "description": "A sample RESTful API.",
+    "title": "Rest API",
+    "contact": {
+      "name": "Tiago Melo",
+      "email": "tiagoharris@gmail.com"
+    },
+    "version": "0.0.1"
+  },
+  "paths": {
+    "/api/v1/hello": {
+      "get": {
+        "tags": [
+          "hello"
+        ],
+        "summary": "Say Hello.",
+        "operationId": "SayHello",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/sayHelloResponse"
+          },
+          "500": {
+            "description": " internal server error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "SayHelloResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "x-go-name": "Message",
+          "example": "Hello, World!"
+        }
+      },
+      "x-go-package": "github.com/tiagomelo/go-templates/example-rest-api/doc"
+    }
+  },
+  "responses": {
+    "sayHelloResponse": {
+      "description": "",
+      "schema": {
+        "$ref": "#/definitions/SayHelloResponse"
+      }
+    }
+  }
+}
