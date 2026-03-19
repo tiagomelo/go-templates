@@ -8,6 +8,8 @@ These templates are designed to provide a solid starting point for various types
 
 ## templates
 
+- [example-rest-api](./example-rest-api/): A minimal Go REST API template that demonstrates best practices for building RESTful APIs, including structured logging, middleware patterns, graceful shutdown, API versioning, and Swagger documentation.
+
 - [example-rest-api-crud](./example-rest-api-crud/): A fully functional REST API for managing books. Utilizes Gorilla Mux, middleware, validator for input validation, and features comprehensive API documentation with Swagger.
 
 - [example-grpc-crud-service](./example-grpc-crud-service/): A fully functional gRPC service. Utilizes Google's gRPC framework, Google's Protocol Buffers and validator for input validation.
