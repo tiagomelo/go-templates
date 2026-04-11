@@ -21,7 +21,7 @@ func RegisterDefaultTools(s *server.Server) {
 	s.RegisterTool(
 		server.ToolDefinition{
 			Name:        "hello_world",
-			Description: "Returns a hello message for the provided name.",
+			Description: "Generate a greeting message for a given name. Use this when the user asks to greet someone, say hello, or produce a simple greeting.",
 			InputSchema: map[string]any{
 				"type": "object",
 				"properties": map[string]any{
