@@ -3,6 +3,7 @@ go 1.26.1
 use (
 	./example-grpc-crud-service
 	./example-grpc-crud-service-with-tls
+	./example-mcp-server
 	./example-rest-api
 	./example-rest-api-crud
 )
